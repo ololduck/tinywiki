@@ -1,0 +1,7 @@
+# python
+*.py[co]
+
+venv
+
+# vim
+*.sw[op]

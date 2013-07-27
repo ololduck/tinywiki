@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{data.pagetitle}}</title>
+    <link rel="stylesheet" type="text/css" href="/static/screen.css">
+</head>
+<body>
+    <div id="header"></div>
+    {%if data.error %}<div class="error">{{ data.error }}</div>{%endif%}
+    <div id="main">
+        {% block main %}
+        {% endblock %}
+    </div>
+</body>
+</html>

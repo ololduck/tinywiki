@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<form action='/{{data.pagetitle}}/save' method='post'>
+    <textarea name="content">{% if data.content %}
+{{data.content}}
+{% elif data.page %}
+{{data.page.content}}
+{% else %}
+{{data.pagetitle}}
+{%endif%}</textarea>
+    <input type="submit" value="Save">
+</form>
+
+{%endblock %}

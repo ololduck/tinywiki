@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% if data.page %}
+{{ data.page.html() | safe }}
+{% else %}
+<p>The page {{data.pagetitle}} doesn't exist! Would you like to <a href="/{{data.pagetitle}}/edit">create_it</a>?</p>
+{% endif %}
+{%endblock %}

@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config["MARKDOWN_EXTS"] = [
         'extra',
         'nl2br',
-        # 'wikilinks',
+        'wikilinks',
         'headerid',
         'codehilite',
         'admonition'

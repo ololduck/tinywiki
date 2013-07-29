@@ -3,9 +3,11 @@ from flask import render_template, redirect, request
 from wiki import app, models
 from wiki.models import ValidationError, get_page
 
+
 @app.route('/')
 def home():
     return redirect('/HomePage')
+
 
 @app.route('/<pagetitle>/edit', methods=['GET', 'POST'])
 def wikipageedit(pagetitle):
@@ -22,6 +24,7 @@ def wikipageedit(pagetitle):
             data["page"] = page
 
     return render_template('wikipage.edit.html', data=data)
+
 
 @app.route('/<pagetitle>/save', methods=['POST'])
 def wikipagesave(pagetitle):
@@ -40,6 +43,10 @@ def wikipagesave(pagetitle):
 
 
 @app.route('/<pagetitle>')
+def wikipageredirect(pagetitle):
+    return redirect('/%s/' % pagetitle)
+
+
 @app.route('/<pagetitle>/')
 def wikipageview(pagetitle):
     page = get_page(pagetitle)

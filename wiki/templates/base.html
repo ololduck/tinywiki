@@ -3,13 +3,57 @@
 <head>
     <title>{{data.pagetitle}}</title>
     <link rel="stylesheet" type="text/css" href="/static/screen.css">
+    <link rel="stylesheet" type="text/css" href="/static/pygments.css">
+    <script type="text/javascript" src='/static/jquery.min.js'></script>
 </head>
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <p><strong>wiki.py</strong> : <em>to get help, press '<a href="#" id="helplink">h</a>'</em></p>
+        <hr />
+    </div>
+    <div id="help" style="display:none">
+    {%block help %}
+        <h1>Help</h1>
+        <p>Welcome to the help of <strong>wiki.py</strong>.</p>
+        <p>To edit a page, visit <a href="#">/PageNameInCamelCase/edit</a>. Use markdown syntax to write it.</p>
+    {% endblock %}
+    </div>
     {%if data.error %}<div class="error">{{ data.error }}</div>{%endif%}
     <div id="main">
         {% block main %}
         {% endblock %}
     </div>
+    <script type="text/javascript">
+    $(function() {
+
+        function getEndOfFullURL(url){
+            return url.split('/').pop()
+        }
+
+        var keyHandler = function(e){
+            if(getEndOfFullURL(window.location.href) == 'edit')
+                if($('textarea').is(":focus"))
+                    return;
+
+            var code = (e.keyCode ? e.keyCode : e.which);
+            var ch = String.fromCharCode(code);
+            console.log(ch + '(' + code + ')');
+            if(ch == 'H')
+                $("#help").toggle();
+            else if(ch == 'E')
+                if(getEndOfFullURL(window.location.href) != 'edit')
+                    window.location.href = window.location.href + 'edit';
+            else if(ch == 'S')
+                if(getEndOfFullURL(window.location.href) == 'edit')
+                    $("#wikipageedit").submit();
+        };
+
+        $(document).bind('keydown', keyHandler);
+        $("#helplink").click(function() {
+            $("#help").toggle();
+        });
+
+    });
+    </script>
 </body>
 </html>

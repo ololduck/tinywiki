@@ -1,0 +1,59 @@
+$title_color: #111
+$wikilink_color: #777
+
+@mixin admonition-base($color)
+    border:
+        top: 1px solid darken($color, 20%)
+        bottom: 1px solid darken($color, 20%)
+    background-color: $color
+    padding:
+        left: 10px
+    margin:
+        top: 5px
+        bottom: 5px
+    p
+        margin:
+            top: 2px
+            bottom: 2px
+    .admonition-title
+        font-weight: bold
+        font-size: 1.1em
+        color: darken($color, 40%)
+
+
+.attention, .caution, .warning
+    @include admonition-base(#FFCD42)
+
+.note, .tip, .hint
+    @include admonition-base(#E8E8FF)
+
+.danger, .error, .important
+    @include admonition-base(#f55)
+
+
+#main
+    h1,h2,h3,h4,h5,h6
+        color: $title_color
+
+    .wikilink
+        color: $wikilink_color
+    .wikilink:hover
+        color: lighten($wikilink_color, 50%)
+    .wikilink:visited
+        color: darken($wikilink_color, 30%)
+
+#header
+    h1, p
+        margin:
+            top: 2px
+            bottom: 2px
+        display: inline
+
+#help
+    border: 1px solid black
+    margin: 5px
+    padding: 5px
+
+#content_edit
+    width: 95%
+    height: 500px

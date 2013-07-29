@@ -1,0 +1,67 @@
+.attention, .caution, .warning {
+  border-top: 1px solid #dba100;
+  border-bottom: 1px solid #dba100;
+  background-color: #ffcd42;
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+  .attention p, .caution p, .warning p {
+    margin-top: 2px;
+    margin-bottom: 2px; }
+  .attention .admonition-title, .caution .admonition-title, .warning .admonition-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #755600; }
+
+.note, .tip, .hint {
+  border-top: 1px solid #8282ff;
+  border-bottom: 1px solid #8282ff;
+  background-color: #e8e8ff;
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+  .note p, .tip p, .hint p {
+    margin-top: 2px;
+    margin-bottom: 2px; }
+  .note .admonition-title, .tip .admonition-title, .hint .admonition-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #1c1cff; }
+
+.danger, .error, .important {
+  border-top: 1px solid #ee0000;
+  border-bottom: 1px solid #ee0000;
+  background-color: #ff5555;
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+  .danger p, .error p, .important p {
+    margin-top: 2px;
+    margin-bottom: 2px; }
+  .danger .admonition-title, .error .admonition-title, .important .admonition-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #880000; }
+
+#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
+  color: #111111; }
+#main .wikilink {
+  color: #777777; }
+#main .wikilink:hover {
+  color: #f6f6f6; }
+#main .wikilink:visited {
+  color: #2a2a2a; }
+
+#header h1, #header p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  display: inline; }
+
+#help {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px; }
+
+#content_edit {
+  width: 95%;
+  height: 500px; }

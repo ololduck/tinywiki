@@ -51,11 +51,8 @@ class WikiPage(db.Model):
 
     def html(self):
         html = markdown.markdown(self.content, extensions=app.config['MARKDOWN_EXTS'])
-        for title in get_all_page_titles():
-            match = re.search(title, html)
-            if(match):
-                html = html.replace(title, '<a href="/%s/">%s</a>' % (title, title))
         return html
 
 class ValidationError(Exception):
     pass
+

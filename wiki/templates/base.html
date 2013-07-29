@@ -40,12 +40,15 @@
             console.log(ch + '(' + code + ')');
             if(ch == 'H')
                 $("#help").toggle();
-            else if(ch == 'E')
-                if(getEndOfFullURL(window.location.href) != 'edit')
+            else if(ch == 'E'){
+                if(getEndOfFullURL(window.location.href) != 'edit'){
                     window.location.href = window.location.href + 'edit';
-            else if(ch == 'S')
+                }
+            }
+            else if(ch == 'S'){
                 if(getEndOfFullURL(window.location.href) == 'edit')
                     $("#wikipageedit").submit();
+            }
         };
 
         $(document).bind('keydown', keyHandler);

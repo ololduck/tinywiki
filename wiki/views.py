@@ -8,26 +8,28 @@ from wiki.models import ValidationError, get_page
 def home():
     return redirect('/HomePage')
 
+
 def is_pagetitle_valid(pagetitle):
     match = models.WikiPage.title_regex.search(pagetitle)
     if(not match):
         return False
     return True
 
+
 @app.route('/<pagetitle>/edit', methods=['GET', 'POST'])
 def wikipageedit(pagetitle):
     if(not is_pagetitle_valid(pagetitle)):
         abort(404)
     data = {
-            "pagetitle": pagetitle
-            }
+        "pagetitle": pagetitle
+    }
 
     if(request.method == 'POST'):
         data['content'] = request.form['content']
 
     else:
         page = get_page(pagetitle)
-        if(page != None):
+        if(page is not None):
             data["page"] = page
 
     return render_template('wikipage.edit.html', data=data)
@@ -63,9 +65,9 @@ def wikipageview(pagetitle):
         abort(404)
     page = get_page(pagetitle)
     data = {
-            "pagetitle": pagetitle
-            }
-    if(page != None):
+        "pagetitle": pagetitle
+    }
+    if(page is not None):
         data["page"] = page
 
     return render_template('wikipage.view.html', data=data)

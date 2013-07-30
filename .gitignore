@@ -1,8 +1,14 @@
 # python
 *.py[co]
+venv*
 
-venv
+# testing
+
+.coverage
+cover
 
 # vim
 *.sw[op]
+
+# application-related
 *.db

@@ -30,7 +30,10 @@ class WikiPage(db.Model):
 
     @classmethod
     def gen_title(a, content):
-        first_line = content.split('\n')[0][:-1]
+        if('\n' in content):
+            first_line = content.split('\n')[0]
+        else:
+            first_line = content
         if(first_line[0:1] == '# '):
             first_line = first_line[2:]
         elif(first_line[0] == '#'):

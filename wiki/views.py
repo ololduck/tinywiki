@@ -53,7 +53,7 @@ def wikipageview(pagetitle):
     data = {
             "pagetitle": pagetitle
             }
-    if(page != []):
+    if(page != None):
         data["page"] = page
 
     return render_template('wikipage.view.html', data=data)

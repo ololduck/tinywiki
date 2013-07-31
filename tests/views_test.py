@@ -54,6 +54,11 @@ class WikiPageTest(unittest.TestCase):
         r = self.app.get('/invalid_url/edit')
         self.assertEqual(r.status_code, 404)
 
+    def test_edit_nonexistent_page(self):
+        r = self.app.get('/NonExistentPage/edit')
+        self.assertEqual(r.status_code, 200)
+        self.assertIn("# NonExistentPage", r.data)
+
     def test_edit_post_wikipage(self):
         r = self.app.post('/HomePage/edit', data={
             "content": """# HomePage

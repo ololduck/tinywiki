@@ -54,8 +54,6 @@ def wikipagesave(pagetitle):
 
 @app.route('/<pagetitle>')
 def wikipageredirect(pagetitle):
-    if(not is_pagetitle_valid(pagetitle)):
-        abort(404)
     return redirect('/%s/' % pagetitle)
 
 

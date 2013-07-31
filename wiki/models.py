@@ -34,10 +34,7 @@ class WikiPage(db.Model):
             first_line = content.split('\n')[0]
         else:
             first_line = content
-        if(first_line[0:1] == '# '):
-            first_line = first_line[2:]
-        elif(first_line[0] == '#'):
-            first_line = first_line[1:]
+        first_line = first_line[first_line.find('#')+1:]
         first_line = first_line.strip(' ')
         match = a.title_regex.match(first_line)
         if(match == None):

@@ -14,13 +14,13 @@ A title level X is made by typing X*#, followed by the title.
 
 e.g.:
 
-# Title1
+    # Title1
 
-## Title2
+    ## Title2
 
-## Title2
+    ## Title2
 
-### Title3
+    ### Title3
 
 As **wiki.py** uses the [markdown python library](http://pythonhosted.org/Markdown/). The following extensions are available:
 
@@ -31,9 +31,9 @@ from wiki import app
 exts = []
 
 for elem in app.config['MARKDOWN_EXTS']:
-    exts.append("* [{0}](http://pythonhosted.org/Markdown/extensions/{0}.html".format(elem))
+    exts.append("* [{0}](http://pythonhosted.org/Markdown/extensions/{0}.html)\n".format(elem))
 
-base_help_page = base_help_page + ", ".join(exts)
+base_help_page = base_help_page + "".join(exts)
 
 base_help_page = base_help_page + """
 

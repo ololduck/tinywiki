@@ -1,9 +1,16 @@
 import markdown
 import re
 from wiki import db, app
+from sqlalchemy.exc import OperationalError
+
 
 def get_page(title):
-    return WikiPage.query.filter_by(title=title).first()
+    try:
+        return WikiPage.query.filter_by(title=title).first()
+    except OperationalError as e:
+        from wiki import init_db
+        init_db()
+
 
 def get_all_page_titles():
     a = WikiPage.query.all()
@@ -32,6 +39,10 @@ class WikiPage(db.Model):
     def gen_title(a, content):
         if('\n' in content):
             first_line = content.split('\n')[0]
+        else:
+            first_line = content
+        if('\r' in content):
+            first_line = content.split('\r')[0]
         else:
             first_line = content
         first_line = first_line[first_line.find('#')+1:]

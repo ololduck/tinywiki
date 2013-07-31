@@ -1,3 +1,11 @@
+.codehilite {
+    background: none repeat scroll 0 0 #F8F8F8;
+    border: 1px solid #CCCCCC;
+    font-family: Menlo,"Bitstream Vera Sans Mono","DejaVu Sans Mono",Monaco,Consolas,monospace;
+    border-radius: 4px 4px 4px 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .codehilite .hll { background-color: #ffffcc }
 .codehilite .c { color: #408080; font-style: italic } /* Comment */
 .codehilite .err { border: 1px solid #FF0000 } /* Error */

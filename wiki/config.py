@@ -10,8 +10,13 @@ MARKDOWN_EXTS = [
     'admonition'
 ]
 
-if "DATABASE_URL" in os.environ:
+if("DATABASE_URL" in os.environ):
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 else:
     dbpath = os.path.join(basedir, 'wiki.db')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + dbpath
+
+if("SECRET_KEY" in os.environ):
+    SECRET_KEY = os.environ["SECRET_KEY"]
+else:
+    SECRET_KEY = "super-secret-of-death"

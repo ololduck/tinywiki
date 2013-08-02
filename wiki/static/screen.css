@@ -43,14 +43,16 @@
     font-size: 1.1em;
     color: #880000; }
 
-#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
-  color: #111111; }
-#main .wikilink {
-  color: #777777; }
-#main .wikilink:hover {
-  color: #f6f6f6; }
-#main .wikilink:visited {
-  color: #2a2a2a; }
+#main {
+  font-family: Sans-serif; }
+  #main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
+    color: #111111; }
+  #main .wikilink {
+    color: #777777; }
+  #main .wikilink:hover {
+    color: #f6f6f6; }
+  #main .wikilink:visited {
+    color: #2a2a2a; }
 
 #header h1, #header p {
   margin-top: 2px;

@@ -70,7 +70,6 @@ Hello"""
 
 Hello""", r.data)
 
-    # TODO: test saves.
 
     def test_save_new_wikipage(self):
         PAGE_NAME = "HiMyNameIsPaul"

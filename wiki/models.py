@@ -72,9 +72,9 @@ class WikiPage(db.Model):
         return html
 
 
-def log_user(login=None, password=None):
-    search = User.query.filter(
-        username=login, password=User.gen_passwd(password)).first()
+def get_user(login=None, password=None):
+    search = User.query.filter_by(
+        username=login).filter_by(password=gen_passwd(password)).first()
     if(search):
         return search
     return None
@@ -84,14 +84,14 @@ def create_user(login, email, password):
     u = User()
     u.username = login
     u.email = email
-    u._gen_passwd(password)
+    u.set_passwd(password)
     u.created_on = datetime.datetime.utcnow()
     return u
 
 
-def gen_passwd(orig_passwd):
+def gen_passwd(passwd):
         return hashlib.sha512(
-            orig_passwd + app.config["SECRET_KEY"]
+            passwd + app.config["SECRET_KEY"]
         ).hexdigest()
 
 
@@ -106,8 +106,8 @@ class User(db.Model):
     def __repr__(self):
         return '<User:%s>' % self.username
 
-    def gen_passwd(self, orig_passwd):
-        self.password = gen_passwd(orig_passwd)
+    def set_passwd(self, passwd):
+        self.password = gen_passwd(passwd)
 
     def save(self):
         db.session.add(self)

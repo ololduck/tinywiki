@@ -1,19 +1,19 @@
 import os
 import unittest
-from wiki import app, db
+from wiki import app, db, init_db
 from wiki import models
+
 
 class WikiPageTest(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join('/tmp/', 'test.db')
         self.app = app.test_client()
-        db.create_all()
+        init_db()
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
-
 
     def test_repr(self):
         a = models.WikiPage("# Hello")
@@ -28,10 +28,10 @@ class WikiPageTest(unittest.TestCase):
     def test_query_all(self):
         a = models.WikiPage("# Hello")
         a.save()
-        self.assertEqual(models.get_all_page_titles(), [u"Hello", ])
+        self.assertIn(u"Hello", models.get_all_page_titles())
         b = models.WikiPage("# Hi")
         b.save()
-        self.assertEqual(models.get_all_page_titles(), [u"Hello", u"Hi"])
+        self.assertIn(u"Hi", models.get_all_page_titles())
 
     def test_title_generation(self):
         a = models.WikiPage('#Hello')
@@ -55,4 +55,4 @@ Mon nom est dsfhkjsdf""")
 
     def test_misformed_title(self):
         with self.assertRaises(models.ValidationError):
-            a = models.WikiPage("# hello")
+            models.WikiPage("# hello")
